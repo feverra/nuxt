@@ -1,0 +1,112 @@
+<template>
+  <div>
+    <v-card class="mx-auto" :class="active?'active':''" max-width="400">
+      <v-img
+        class="white-text align-end"
+        height="200px"
+        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+      >
+        <div class="more-detail" @click="$emit('moreDetail')">More Detail</div>
+      </v-img>
+      <div class="card-content">
+        <div>
+          <v-card-text class="text-primary">
+            <h1>Design Thinking 1</h1>
+          </v-card-text>
+          <v-card-subtitle class="pt-0">Marvelous Team A</v-card-subtitle>
+        </div>
+        <v-btn class="circle" @click="$emit('chooseWorkshop',1)">
+          <v-icon>check</v-icon>
+        </v-btn>
+      </div>
+    </v-card>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dialog: false,
+      selectedWorkshop: 0
+    };
+  },
+  props: ["active"],
+  computed: {},
+  methods: {}
+};
+</script>
+
+<style lang="scss" scoped>
+.dialog-card {
+  .detail {
+    margin: 10px 0;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .v-card__title.headline {
+    font-size: 20px;
+  }
+  .v-card__text {
+    padding-bottom: 0;
+  }
+}
+.circle {
+  border-radius: 50%;
+  height: 32px !important;
+  width: 32px !important;
+  min-width: auto !important;
+  color: white;
+  background-color: rgba($color: #1a56be, $alpha: 0.3) !important;
+  align-self: center;
+}
+.more-detail {
+  font-size: 12px;
+  color: #1a56be;
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  display: inline;
+  position: absolute;
+  bottom: 15px;
+  right: 11px;
+}
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+.v-card + .v-card {
+  margin-top: 30px;
+}
+.v-card__subtitle {
+  padding: 0;
+}
+.v-card__text {
+  padding: 0;
+  padding-bottom: 5px;
+  h1 {
+    font-size: 24px;
+  }
+}
+.v-card.active {
+  .circle {
+    background-color: rgba($color: #1a56be, $alpha: 1) !important;
+  }
+  .v-image {
+    &::before {
+      content: "Selected";
+      font-weight: bold;
+      font-size: 24px;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      background-color: #1a56be;
+    }
+  }
+}
+</style>
