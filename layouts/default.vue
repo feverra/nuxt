@@ -35,6 +35,9 @@ export default {
 .text-primary {
   color: #1a56be;
 }
+.bold{
+  font-weight: bold;
+}
 .text-title {
   font-size: 20px;
   font-weight: bold;

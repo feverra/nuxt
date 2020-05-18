@@ -171,11 +171,4 @@ export default {
 .v-from {
   padding: 0 10px;
 }
-// .set-birthday {
-//   position: relative;
-//   ::v-deep .v-input__prepend-outer {
-//     position: absolute;
-//     right: 0;
-//   }
-// }
 </style>
