@@ -1,21 +1,17 @@
 <template>
   <div>
     <v-card class="mx-auto" :class="active?'active':''" max-width="400">
-      <v-img
-        class="white-text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
+      <v-img class="white-text align-end" height="200px" :src="session.image">
         <div class="more-detail" @click="$emit('moreDetail')">More Detail</div>
       </v-img>
       <div class="card-content">
         <div>
           <v-card-text class="text-primary">
-            <h1>Design Thinking 1</h1>
+            <h1>{{session.title}}</h1>
           </v-card-text>
-          <v-card-subtitle class="pt-0">Marvelous Team A</v-card-subtitle>
+          <v-card-subtitle class="pt-0">{{session.spaker}}</v-card-subtitle>
         </div>
-        <v-btn class="circle" @click="$emit('chooseWorkshop',1)">
+        <v-btn class="circle" @click="$emit('chooseWorkshop')">
           <v-icon>check</v-icon>
         </v-btn>
       </div>
@@ -31,27 +27,13 @@ export default {
       selectedWorkshop: 0
     };
   },
-  props: ["active"],
+  props: ["active", "session"],
   computed: {},
   methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
-.dialog-card {
-  .detail {
-    margin: 10px 0;
-  }
-  p {
-    margin-bottom: 0;
-  }
-  .v-card__title.headline {
-    font-size: 20px;
-  }
-  .v-card__text {
-    padding-bottom: 0;
-  }
-}
 .circle {
   border-radius: 50%;
   height: 32px !important;

@@ -156,7 +156,8 @@ export default {
           )
           .then(res => {
             this.$router.push("/register/done");
-          });
+          })
+          .catch(e => console.log(e));
       }
     },
     back() {
