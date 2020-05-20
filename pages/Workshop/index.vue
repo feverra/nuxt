@@ -86,7 +86,7 @@ export default {
       } else {
         console.log("done");
         this.$axios
-          .put(
+          .patch(
             "https://nuxt-test-e6f70.firebaseio.com/workshops/line:0001.json",
             { ...this.selectedWorkshop }
           )

@@ -14,7 +14,59 @@ export const state = () => ({
         company: "",
         postion: ""
     },
+    survey: {
+        survey1: 5,
+        survey2: '',
+        survey3: 1,
+    },
     data: {
+        agenda: [{
+                date: "20 March 2020",
+                sessions: [{
+                        time: "10:00 AM",
+                        title: "INTRODUCTIONS-1",
+                        spaker: "Marvelous Team",
+                        image: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                        duringTime: "100 min"
+                    },
+                    {
+                        type: "set",
+                        time: "12:00 AM",
+                        sessionSet: [{
+                                title: "INTRODUCTIONS-2",
+                                spaker: "Marvelous Team",
+                                image: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                                duringTime: "100 min"
+                            },
+                            {
+                                title: "INTRODUCTIONS-3",
+                                spaker: "Marvelous Team",
+                                image: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                                duringTime: "100 min"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                date: "21 March 2020",
+                sessions: [{
+                        time: "10:00 AM",
+                        title: "INTRODUCTIONS-4",
+                        spaker: "Marvelous Team",
+                        image: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                        duringTime: "100 min"
+                    },
+                    {
+                        time: "10:00 AM",
+                        title: "INTRODUCTIONS-5",
+                        spaker: "Marvelous Team",
+                        image: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+                        duringTime: "100 min"
+                    }
+                ]
+            }
+        ],
         workshops: [{
                 date: "20 March 2020",
                 sessions: [{
@@ -94,6 +146,9 @@ export const state = () => ({
 })
 
 export const getters = {
+    getAgenda(state) {
+        return state.data.agenda
+    },
     getRegister(state) {
         return state.register
     },
@@ -102,6 +157,9 @@ export const getters = {
     },
     getWorkshop(state) {
         return state.data.workshops
+    },
+    getSurvey(state) {
+        return state.survey
     }
 }
 
@@ -117,6 +175,12 @@ export const mutations = {
             ...state.diglog,
             ...data
         }
+    },
+    SET_Survey(state, data) {
+        state.survey = {
+            ...state.survey,
+            ...data
+        }
     }
 }
 
@@ -126,5 +190,8 @@ export const actions = {
     },
     setRegister({ commit }, data) {
         commit('SET_REGISTER', data)
+    },
+    setSurvey({ commit }, data) {
+        commit('SET_Survey', data)
     }
 }

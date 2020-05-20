@@ -150,7 +150,7 @@ export default {
       if (this.validate() == true) {
         this.$store.dispatch("setRegister", this.form);
         this.$axios
-          .put(
+          .patch(
             "https://nuxt-test-e6f70.firebaseio.com/members/line:0001/profile.json",
             this.$store.getters.getRegister
           )

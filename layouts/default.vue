@@ -35,14 +35,16 @@ export default {
 .text-primary {
   color: #1a56be;
 }
-.bold{
+.bold {
   font-weight: bold;
 }
 .text-title {
   font-size: 20px;
   font-weight: bold;
 }
-
+.mt-100 {
+  margin-top: 100px !important;
+}
 .w-100 {
   width: 100%;
 }
