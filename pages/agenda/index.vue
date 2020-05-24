@@ -29,7 +29,7 @@
                 <div v-else>
                   <v-card-text>
                     <p class="time pb-0">{{session.time}}</p>
-                    <v-row v-for="(set,key) in session.sessionSet" :key="set">
+                    <v-row v-for="(set,key) in session.sessionSet" :key="set.title">
                       <v-col cols="4" class="text-center pt-0 pb-0">
                         <img :src="set.image" class="agenda-image" />
                       </v-col>

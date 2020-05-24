@@ -19,6 +19,11 @@ export const state = () => ({
         survey2: '',
         survey3: 1,
     },
+    line: {
+        displayName: "Display name",
+        pictureUrl: "",
+        userId: ""
+    },
     data: {
         agenda: [{
                 date: "20 March 2020",
@@ -160,6 +165,9 @@ export const getters = {
     },
     getSurvey(state) {
         return state.survey
+    },
+    getLine(state) {
+        return state.line
     }
 }
 
@@ -176,9 +184,15 @@ export const mutations = {
             ...data
         }
     },
-    SET_Survey(state, data) {
+    SET_SURVEY(state, data) {
         state.survey = {
             ...state.survey,
+            ...data
+        }
+    },
+    SET_LINE(state, data) {
+        state.line = {
+            ...state.line,
             ...data
         }
     }
@@ -192,6 +206,9 @@ export const actions = {
         commit('SET_REGISTER', data)
     },
     setSurvey({ commit }, data) {
-        commit('SET_Survey', data)
+        commit('SET_SURVEY', data)
+    },
+    setLine({ commit }, data) {
+        commit('SET_LINE', data)
     }
 }

@@ -8,10 +8,16 @@
         <v-col cols="12">
           <div class="mt-8 text-primary text-title text-center">Step 1 of 2</div>
         </v-col>
-        <v-col cols="12" class="text-center pb-0">
-          <img src="~/assets/Artboard 227@2x@2x.png" alt width="155" />
+        <v-col cols="12" class="text-center pb-0 profile-image">
+          <img
+            v-if="getLine.pictureUrl == ''"
+            src="~/assets/Artboard 227@2x@2x.png"
+            alt
+            width="155"
+          />
+          <img v-else :src="getLine.pictureUrl" alt width="155" />
         </v-col>
-        <v-col cols="12" class="text-center pt-1 pb-0">Display name</v-col>
+        <v-col cols="12" class="text-center pt-1 pb-0">{{getLine.displayName}}</v-col>
         <v-col>
           <v-form>
             <v-text-field v-model="form.firstname" label="Firstname" dense required></v-text-field>
@@ -84,7 +90,44 @@ export default {
       }
     };
   },
+  computed: {
+    getLine() {
+      return this.$store.getters.getLine;
+    }
+  },
+  mounted() {
+    liff
+      .init({
+        liffId: "1654261339-8ogvOMX9"
+      })
+      .then(() => {
+        if (!liff.isLoggedIn()) {
+          liff.login();
+        } else {
+          liff.getProfile().then(profile => {
+            console.log(profile);
+            this.$store.dispatch("setLine", profile);
+            this.isDone();
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
+    isDone() {
+      this.$axios
+        .get(
+          `https://nuxt-test-e6f70.firebaseio.com/members/${this.$store.getters.getLine.userId}/profile.json`
+        )
+        .then(res => {
+          if (res.data != null) {
+            this.$router.push("/register/done");
+          }
+        })
+        .catch(e => console.log(e));
+    },
     validate() {
       let validated = true;
       const error = [];
@@ -116,6 +159,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.profile-image {
+  img {
+    border-radius: 50%;
+  }
+}
 .v-from {
   padding: 0 10px;
 }

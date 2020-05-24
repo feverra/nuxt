@@ -34,17 +34,13 @@ export default {
       name: this.$store.getters.getRegister.firstname
     };
   },
-  mounted() {
-    if (this.name == "") {
-      this.$router.push("/register");
-    }
-  },
+  mounted() {},
   methods: {
     workshop() {
       this.$router.push("/workshop");
     },
     close() {
-      this.$router.push("/register");
+      liff.closeWindow();
     }
   }
 };
